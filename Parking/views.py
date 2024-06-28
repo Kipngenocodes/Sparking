@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-def home (request) :
+def home (request):
     # Checking if they are logging in.
     if request.method == "POST":
         username = request.POST['username']
@@ -27,5 +27,8 @@ def logout_user(request):
     logout(request)
     messages.success(request, ("You have successfully logged out"))
     return redirect('home')
+
+def register_user(request):
+    return render(request, 'register.html', {})
 
 
