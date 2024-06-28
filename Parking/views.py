@@ -1,3 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+def home (request) :
+    # Checking if they are logging in.
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        # Authenticating the user
+        user = authenticate(request, username= username, password= password)
+        if user is not None:
+            login(request, user)
+            # Giving a user a message that login was successful. 
+            messages.success(request, ("You have successfully logged in"))
+            return redirect('home')
+                # Giving a user a message that login was unsuccessful. 
+        else:
+            messages.success(request, ("Your username or password is incorrect"))
+            return redirect('home')
+    else:
+        return render(request, 'home.html', {})
+# def login_user(request):
+    # pass
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, ("You have successfully logged out"))
+    return redirect('home')
+
+
