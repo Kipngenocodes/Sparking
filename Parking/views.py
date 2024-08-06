@@ -6,9 +6,11 @@ from .forms import SignUpForm, UserForm, UserProfileForm
 
 
 def home(request):
+    # Checking if you are logging in.
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
+        # Authentication of the person trying to login.
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)

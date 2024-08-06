@@ -20,7 +20,7 @@ urlpatterns = [
         name= "register"
         ),
      path(
-        'Parking_and_profile_Management ',
+        'Parking_and_profile_Management/ ',
         views.Parking_and_profile_Management,
         name= "Parking_and_profile_Management"
         ),
