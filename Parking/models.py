@@ -26,12 +26,4 @@ class record(models.Model):
     def __str__(self):
         return f'Profile of {self.user.username}'
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # Add other fields related to the profile, for example:
-    bio = models.TextField(blank=True)
-    location = models.CharField(max_length=100, blank=True)
-    # Add any other fields you need
 
-    def __str__(self):
-        return self.user.username + "'s Profile"
